@@ -21,14 +21,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 
     @Autowired
-    public WebSecurityConfig(AuthenticationSuccessHandler authenticationSuccessHandler, UserDetailsService userDetailsService) {
+    public WebSecurityConfig(AuthenticationSuccessHandler authenticationSuccessHandler,
+                             UserDetailsService userDetailsService) {
         this.authenticationSuccessHandler = authenticationSuccessHandler;
         this.userDetailsService = userDetailsService;
     }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http
+        http.csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/auth/login", "/logout").permitAll()
                 .antMatchers("/admin/**").hasRole("ADMIN")

@@ -133,11 +133,13 @@
                        placeholder="Password">
             </div>
             <br>
+
             <div class="form-group">
                 <label for="roles">Role</label>
                 <select name="role" class="form-control form-control-sm" multiple id="roles" style="height: 60px;">
-                    <option value="1">Admin</option>
-                    <option value="2">User</option>
+                    <option th:each="role : ${allRoles}"
+                            th:value="${role.getId()}"
+                            th:text="${role.getRole()}"></option>
                 </select>
             </div>
             <br>
