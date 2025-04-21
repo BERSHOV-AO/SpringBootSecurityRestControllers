@@ -38,20 +38,6 @@ public class User implements UserDetails {
     )
     private Set<Role> roles;
 
-    public String getAllUserRoles() {
-        return roles.stream()
-                .map(role -> {
-                    if (role.getRole().equals("ROLE_USER")) {
-                        return "USER";
-                    } else if (role.getRole().equals("ROLE_ADMIN")) {
-                        return "ADMIN";
-                    } else {
-                        return role.getRole();
-                    }
-                })
-                .collect(Collectors.joining(", "));
-    }
-
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return getRoles();

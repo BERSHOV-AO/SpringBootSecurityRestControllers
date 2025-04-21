@@ -1,4 +1,5 @@
 package ru.kata.springbootsecurityrestcontrollers.services;
+
 import ru.kata.springbootsecurityrestcontrollers.models.Role;
 import ru.kata.springbootsecurityrestcontrollers.models.User;
 

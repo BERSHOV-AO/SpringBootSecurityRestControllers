@@ -1,10 +1,12 @@
 package ru.kata.springbootsecurityrestcontrollers.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
 import java.util.Objects;
 import java.util.Set;
+
 
 @Entity
 @Table(name = "Role")
@@ -18,13 +20,21 @@ public class Role implements GrantedAuthority {
     private String name;
 
     @ManyToMany(mappedBy = "roles")
+    @JsonIgnore
     private Set<User> users;
-
 
     public Role() {
     }
 
     public Role(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
         this.name = name;
     }
 
@@ -36,13 +46,13 @@ public class Role implements GrantedAuthority {
         this.id = id;
     }
 
-    public String getRole() {
-        return name;
-    }
-
-    public void setRole(String role) {
-        this.name = role;
-    }
+//    public String getRole() {
+//        return name;
+//    }
+//
+//    public void setRole(String role) {
+//        this.name = role;
+//    }
 
     public Set<User> getUsers() {
         return users;

@@ -53,8 +53,7 @@ public class AdminRestController {
 
     @PostMapping(value = "/update")
     public ResponseEntity<HttpStatus> update(@RequestBody User user) {
-        userService.update(user.getId(),
-                userService.updateUser(user, user.getRoles(), user.getId()));
+        userService.update(user.getId(), userService.updateUser(user, user.getRoles(), user.getId()));
         return ResponseEntity.ok(HttpStatus.OK);
     }
 
